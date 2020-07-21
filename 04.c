@@ -2,16 +2,19 @@
 #include <string.h>
 #include "bibic05/ex00/ft_iterative_factorial.c"
 #include "bibic05/ex01/ft_recursive_factorial.c"
+#include "bibic05/ex02/ft_iterative_power.c"
 
 int main()
 {
-	int t1 = 0;
-	int t2 = -10;
-	int t3 = 5;
-	int t4 = 1;
-	printf("fact %i = %i\n", t1, ft_iterative_factorial(t1));
-	printf("fact %i = %i\n", t2, ft_iterative_factorial(t2));
-	printf("fact %i = %i\n", t3, ft_iterative_factorial(t3));
-	printf("fact %i = %i\n", t4, ft_iterative_factorial(t4));
+	int a1, p1 , a2, p2, a3, p3;
+	a1 = 0;
+	p1 = 0;
+	a2 = -2;
+	p2 = 2;
+	a3 = 4;
+	p3 = -1;
+	printf("pow(%i, %i) = %i\n",a1, p1, ft_iterative_power(a1, p1));
+	printf("pow(%i, %i) = %i\n",a2, p2, ft_iterative_power(a2, p2));
+	printf("pow(%i, %i) = %i\n",a3, p3, ft_iterative_power(a3, p3));
 	return 0;
 }
