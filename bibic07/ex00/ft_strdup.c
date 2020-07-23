@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/21 14:31:01 by bstrider          #+#    #+#             */
-/*   Updated: 2020/07/23 12:15:54 by bstrider         ###   ########.fr       */
+/*   Created: 2020/07/23 17:00:50 by bstrider          #+#    #+#             */
+/*   Updated: 2020/07/23 19:08:55 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
-{
-	int cnt;
+#include <stdlib.h>
 
-	cnt = nb - 1;
-	if (nb == 0 || nb == 1)
-		nb = 1;
-	else if (nb < 0)
-		nb = 0;
-	else
+int		ft_strlen(char *str)
+{
+	unsigned int len;
+
+	len = 0;
+	while (*str != '\0')
 	{
-		while (cnt >= 1)
-		{
-			nb *= cnt;
-			cnt--;
-		}
+		str++;
+		len++;
 	}
-	return (nb);
+	return (len);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		cnt;
+	char	*dest;
+	
+	cnt = 0;
+	dest = malloc(ft_strlen(src) + 1);
+	if (dest != NULL)
+	{
+		while (cnt < ft_strlen(src))
+		{
+			dest[cnt] = src[cnt];
+			cnt++;
+		}
+		dest[cnt] = '\0';
+	}
+	return (dest);
 }

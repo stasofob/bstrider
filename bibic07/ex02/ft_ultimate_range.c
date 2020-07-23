@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/21 14:31:01 by bstrider          #+#    #+#             */
-/*   Updated: 2020/07/23 12:15:54 by bstrider         ###   ########.fr       */
+/*   Created: 2020/07/23 19:13:17 by bstrider          #+#    #+#             */
+/*   Updated: 2020/07/23 20:30:50 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+#include <stdlib.h>
+#include <stdio.h>
+
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	int cnt;
 
-	cnt = nb - 1;
-	if (nb == 0 || nb == 1)
-		nb = 1;
-	else if (nb < 0)
-		nb = 0;
+	cnt = 1;
+	*range = (int *)malloc((max - min) * sizeof(int));
+	printf("pointer = %p\n", range);
+	if (*range == NULL)
+		return (-1);
+	else if (min >= max)
+	{
+		*range = NULL;
+		return (0);
+	}
 	else
 	{
-		while (cnt >= 1)
+		while (min < max)
 		{
-			nb *= cnt;
-			cnt--;
+			*(*range+cnt) = min;
+			min++;
+			cnt++;
 		}
 	}
-	return (nb);
+	return (cnt);
 }

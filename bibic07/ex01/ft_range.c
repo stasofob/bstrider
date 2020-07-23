@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/21 14:31:01 by bstrider          #+#    #+#             */
-/*   Updated: 2020/07/23 12:15:54 by bstrider         ###   ########.fr       */
+/*   Created: 2020/07/23 17:22:38 by bstrider          #+#    #+#             */
+/*   Updated: 2020/07/23 19:01:19 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
 {
+	int *arr;
 	int cnt;
 
-	cnt = nb - 1;
-	if (nb == 0 || nb == 1)
-		nb = 1;
-	else if (nb < 0)
-		nb = 0;
+	arr = (int *)malloc((max - min) * sizeof(int));
+	cnt = 0;
+	if (arr == NULL || min >= max)
+		return (NULL);
 	else
-	{
-		while (cnt >= 1)
+		while (min < max)
 		{
-			nb *= cnt;
-			cnt--;
+			arr[cnt++] = min;
+			min++;
 		}
-	}
-	return (nb);
+	return (arr);
 }
