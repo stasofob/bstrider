@@ -6,20 +6,18 @@
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:13:17 by bstrider          #+#    #+#             */
-/*   Updated: 2020/07/23 20:30:50 by bstrider         ###   ########.fr       */
+/*   Updated: 2020/07/23 21:12:22 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int cnt;
 
-	cnt = 1;
+	cnt = 0;
 	*range = (int *)malloc((max - min) * sizeof(int));
-	printf("pointer = %p\n", range);
 	if (*range == NULL)
 		return (-1);
 	else if (min >= max)
