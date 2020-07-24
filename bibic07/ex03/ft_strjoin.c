@@ -1,4 +1,18 @@
-int	ft_strlen(char *str)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/24 20:35:19 by bstrider          #+#    #+#             */
+/*   Updated: 2020/07/24 22:00:29 by bstrider         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int		ft_strlen(char *str)
 {
 	unsigned int len;
 
@@ -10,7 +24,22 @@ int	ft_strlen(char *str)
 	}
 	return (len);
 }
-int ch_count(char **strs, int size)
+
+char	*ft_strcpy(char *dest, char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+int		ch_count(char **strs, int size)
 {
 	int result;
 	int cnt;
@@ -24,18 +53,30 @@ int ch_count(char **strs, int size)
 	}
 	return (result);
 }
-#include <stdio.h>
-int main(int argc, char **argv)
-{
-	printf ("count in mass = %i\n", ch_count(argv, argc));
-	return 0;
-}
 
-/*char *ft_strjoin(int size, char **strs, char *sep)
+char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	char *result;
-	int cnt;
+	char	*result;
+	int		cnt;
 
 	cnt = 0;
-	while (cnt < size)
-	*/
+	if (size == 0)
+	{
+		result = malloc(1);
+		*result = '\0';
+	}
+	else
+	{
+		result = malloc(ch_count(strs, size) + size);
+		while (cnt < size)
+		{
+			ft_strcpy(result, strs[cnt]);
+			result += ft_strlen(strs[cnt]);
+			if (cnt != size - 1)
+				*result++ = *sep;
+			cnt++;
+		}
+		*result = '\0';
+	}
+	return (result - ch_count(strs, size) - size + 1);
+}

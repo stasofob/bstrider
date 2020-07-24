@@ -6,7 +6,7 @@
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 19:13:17 by bstrider          #+#    #+#             */
-/*   Updated: 2020/07/23 21:12:22 by bstrider         ###   ########.fr       */
+/*   Updated: 2020/07/24 19:28:17 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	{
 		while (min < max)
 		{
-			*(*range+cnt) = min;
+			*(*range + cnt) = min;
 			min++;
 			cnt++;
 		}

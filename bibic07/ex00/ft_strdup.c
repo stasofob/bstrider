@@ -6,10 +6,11 @@
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 17:00:50 by bstrider          #+#    #+#             */
-/*   Updated: 2020/07/23 19:08:55 by bstrider         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:39:01 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h>
 #include <stdlib.h>
 
 int		ft_strlen(char *str)
@@ -29,9 +30,9 @@ char	*ft_strdup(char *src)
 {
 	int		cnt;
 	char	*dest;
-	
+
+	dest = (char *)malloc(ft_strlen(src) + 1);
 	cnt = 0;
-	dest = malloc(ft_strlen(src) + 1);
 	if (dest != NULL)
 	{
 		while (cnt < ft_strlen(src))
@@ -40,6 +41,10 @@ char	*ft_strdup(char *src)
 			cnt++;
 		}
 		dest[cnt] = '\0';
+	}
+	else
+	{
+		errno = ENOENT;
 	}
 	return (dest);
 }
