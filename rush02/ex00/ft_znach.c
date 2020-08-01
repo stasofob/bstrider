@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_znach(int len, char *str)
+#include "rush02.h"
+
+void	ft_znach(char *str, int len)
 {
 	int len1;
 	int n;

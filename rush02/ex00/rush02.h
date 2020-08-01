@@ -14,26 +14,17 @@
 # define RUSH02_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include "list.h"
 # define ERROR_INPUT "Error\n"
 # define DICT_PARSING "Dict Error\n"
-
-typedef struct	s_number
-{
-	char	*key;
-	char	*value;
-}				t_number;
-
-typedef struct	s_list_dict
-{
-	char				*key;
-	char				*data;
-	struct s_list_dict	*next;
-}				t_list;
+# define DEFAULT_FILE "Numbers.dict"
 
 void			ft_putstr(char *str);
-int				ft_strlen(char *str);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_isnumber(char *str);
-void			ft_znach(int len, char *str);
+void			ft_znach(char *str, int len);
+int			ft_file_size(char *file);
+t_list			*ft_dict(char *file, int file_size);
 
 #endif

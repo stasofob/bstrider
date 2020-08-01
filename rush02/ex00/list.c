@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "rush02.h"
+#include "list.h"
 
 t_list	*ft_create_elem(char *key, char *data)
 {
@@ -26,19 +27,24 @@ t_list	*ft_create_elem(char *key, char *data)
 	return (dict);
 }
 
-void	ft_list_push_back(t_list **begin_list, char *key, char *data)
+int	ft_list_push_back(t_list **begin_list, char *key, char *data)
 {
-	t_list *tmp;
+	t_list	*tmp;
+	int	repeat_insert;
 
+	repeat_insert = 0;
 	if (!begin_list || !(*begin_list))
 		*begin_list = ft_create_elem(key, data);
 	else
 	{
+		if (ft_find_data(*begin_list, key) != NULL)
+			repeat_insert = 1;
 		tmp = *begin_list;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = ft_create_elem(key, data);
 	}
+	return (repeat_insert);
 }
 
 void	ft_list_clear(t_list *begin_list)
@@ -53,7 +59,7 @@ void	ft_list_clear(t_list *begin_list)
 	}
 }
 
-char	*find_data(t_list *list, char *key)
+char	*ft_find_data(t_list *list, char *key)
 {
 	t_list *temp;
 
