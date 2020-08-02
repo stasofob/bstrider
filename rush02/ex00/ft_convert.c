@@ -42,7 +42,7 @@ int ft_convert(t_list *dict, char *str, int size)
 	success = 1;
 	int flag = 0;
 	//print_list(dict);
-	while (*str != '\0' && i > 0)
+	while (*str != '\0')
 	{
 		if (i % 3 == 0 && flag)
 		{
@@ -55,10 +55,16 @@ int ft_convert(t_list *dict, char *str, int size)
 			flag = 1;
 			if (i % 3 == 2)
 			{
-				key = generate_num('1',2);
-				ft_list_push_back(&number, key, strdup(ft_find_data(dict,key)));
+				if (i != size)
+				{	
+					key = generate_num('1',2);
+					ft_list_push_back(&number, key, strdup(ft_find_data(dict,key)));
+				}
 				if (*str == '1')
+				{
 					key = ft_strndup(str++, 2);
+					i--;
+				}
 				else
 					key = generate_num(*str, 1);
 			}
@@ -66,7 +72,6 @@ int ft_convert(t_list *dict, char *str, int size)
 				key = ft_strndup(str, 1);
 			ft_list_push_back(&number, key, strdup(ft_find_data(dict, key)));
 		}
-
 		str++;
 		i--;
 	}
