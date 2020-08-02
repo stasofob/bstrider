@@ -1,3 +1,4 @@
+#include <fcntl.h>
 #include "rush02.h"
 
 int		ft_file_size(char *file)

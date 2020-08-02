@@ -12,19 +12,27 @@
 
 #ifndef RUSH02_H
 # define RUSH02_H
-# include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "list.h"
+# include "my_list.h"
 # define ERROR_INPUT "Error\n"
 # define DICT_PARSING "Dict Error\n"
-# define DEFAULT_FILE "Numbers.dict"
+# define DEFAULT_FILE "numbers.dict"
 
 void			ft_putstr(char *str);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_isnumber(char *str);
 void			ft_znach(char *str, int len);
 int			ft_file_size(char *file);
+void 			ft_convert(t_list *dict, char *str, int size);
+char    		*ft_strdup(char *src);
+char    		*ft_strndup(char *src, int n);
 t_list			*ft_dict(char *file, int file_size);
+
+
+
+
+void print_list(t_list *dict);
+char *generate_num(int rank);
 
 #endif

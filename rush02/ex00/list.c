@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "rush02.h"
-#include "list.h"
 
 t_list	*ft_create_elem(char *key, char *data)
 {
