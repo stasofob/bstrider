@@ -6,7 +6,7 @@
 /*   By: bstrider <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 14:09:40 by bstrider          #+#    #+#             */
-/*   Updated: 2020/08/01 16:24:52 by bstrider         ###   ########.fr       */
+/*   Updated: 2020/08/02 15:34:08 by bstrider         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ void	ft_list_clear(t_list *begin_list)
 {
 	t_list *p;
 
-	p = begin_list;
 	while (begin_list)
 	{
+		p = begin_list;
 		begin_list = begin_list->next;
+		free(p->key);
+		free(p->data);
 		free(p);
 	}
 }

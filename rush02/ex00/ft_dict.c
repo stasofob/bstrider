@@ -48,6 +48,8 @@ int			ft_data_size(char *str)
 {
 	int		size;
 
+	while(*str == '\n')
+        str++;
 	size = 0;
 	while (*str >= '0' && *str <= '9')
 		str++;
@@ -71,8 +73,10 @@ char		*ft_write_list(char *p, t_list **begin)
 	int			i;
 
 	key = (char*)malloc(ft_key_size(p) + 1);
-    	data = (char*)malloc(ft_data_size(p) + 1);
+    data = (char*)malloc(ft_data_size(p) + 1);
 	i = 0;
+	while(*p == '\n')
+        p++;
 	while (*p >= '0' && *p <= '9')
 	{
 		key[i] = *p;
@@ -98,7 +102,13 @@ char		*ft_write_list(char *p, t_list **begin)
             i--;
         }
 	data[i] = '\0';
-	ft_list_push_back(begin , key, data);
+	ft_list_push_back(begin, key, data);
+	/*if (ft_list_push_back(begin , key, data) == 1)
+	{
+		ft_putstr("repeat insert!\n");
+		ft_list_clear(*begin);
+		p = "\0";
+	}*/
 	return (p);
 }
 
@@ -113,9 +123,7 @@ t_list		*ft_dict(char *file, int file_size)
 	begin = 0;
 	op = open(file, O_RDONLY);
 	if (op == -1)
-	{	
 		return (NULL);
-	}
 	rd = read(op, str, file_size);
 	if (ft_dict_check(str))
 	{
